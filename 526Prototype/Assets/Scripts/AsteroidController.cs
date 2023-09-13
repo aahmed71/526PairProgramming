@@ -6,6 +6,7 @@ public class AsteroidController : MonoBehaviour
 {
     [SerializeField] private Rigidbody2D rb;
     [SerializeField] private float speed;
+    [SerializeField] private GameObject player;
     // Start is called before the first frame update
     void Start()
     {
@@ -15,6 +16,8 @@ public class AsteroidController : MonoBehaviour
         var direction = new Vector2(x, y);
 
         rb.velocity = direction * speed;
+
+        player = GameObject.FindWithTag("Player");
     }
 
     // Update is called once per frame
@@ -27,4 +30,16 @@ public class AsteroidController : MonoBehaviour
     {
         rb.velocity = rb.velocity.normalized * speed;
     }
+
+    void OnMouseDown()
+    {
+        player.GetComponent<PlayerController>().Grapple();
+    }
+
+    private void OnMouseUp()
+    {
+        player.GetComponent<PlayerController>().ReleaseGrapple();
+    }
+
+
 }

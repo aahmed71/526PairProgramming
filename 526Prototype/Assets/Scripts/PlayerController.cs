@@ -23,6 +23,7 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        /*
         if (Input.GetKeyDown(KeyCode.Mouse0))
         {
             Vector2 mousePos = (Vector2)mainCamera.ScreenToWorldPoint(Input.mousePosition);
@@ -36,7 +37,7 @@ public class PlayerController : MonoBehaviour
         {
             _distanceJoint.enabled = false;
             _lineRenderer.enabled = false;
-        }
+        }*/
         if (_distanceJoint.enabled)
         {
             _lineRenderer.SetPosition(1, transform.position);
@@ -46,5 +47,22 @@ public class PlayerController : MonoBehaviour
     private void FixedUpdate()
     {
         rb.velocity = rb.velocity.normalized * speed;
+    }
+
+    public void Grapple()
+    {
+        Vector2 mousePos = (Vector2)mainCamera.ScreenToWorldPoint(Input.mousePosition);
+        _lineRenderer.SetPosition(0, mousePos);
+        _lineRenderer.SetPosition(1, transform.position);
+        _distanceJoint.connectedAnchor = mousePos;
+        _distanceJoint.enabled = true;
+        _lineRenderer.enabled = true;
+        Debug.Log("tag");
+    }
+
+    public void ReleaseGrapple()
+    {
+        _distanceJoint.enabled = false;
+        _lineRenderer.enabled = false;
     }
 }
