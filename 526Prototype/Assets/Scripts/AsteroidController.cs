@@ -23,7 +23,7 @@ public class AsteroidController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+
     }
 
     private void FixedUpdate()
@@ -33,7 +33,7 @@ public class AsteroidController : MonoBehaviour
 
     void OnMouseDown()
     {
-        player.GetComponent<PlayerController>().Grapple();
+        player.GetComponent<PlayerController>().Grapple(this.gameObject);
     }
 
     private void OnMouseUp()

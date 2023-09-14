@@ -9,6 +9,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private Camera mainCamera;
     [SerializeField] private LineRenderer _lineRenderer;
     [SerializeField] private DistanceJoint2D _distanceJoint;
+    public GameObject grappled;
     // Start is called before the first frame update
     void Start()
     {
@@ -40,6 +41,7 @@ public class PlayerController : MonoBehaviour
         }*/
         if (_distanceJoint.enabled)
         {
+            _lineRenderer.SetPosition(0, grappled.transform.position);
             _lineRenderer.SetPosition(1, transform.position);
         }
     }
@@ -49,12 +51,13 @@ public class PlayerController : MonoBehaviour
         rb.velocity = rb.velocity.normalized * speed;
     }
 
-    public void Grapple()
+    public void Grapple(GameObject gameObj)
     {
         Vector2 mousePos = (Vector2)mainCamera.ScreenToWorldPoint(Input.mousePosition);
-        _lineRenderer.SetPosition(0, mousePos);
+        grappled = gameObj;
+        _lineRenderer.SetPosition(0, gameObj.transform.position);
         _lineRenderer.SetPosition(1, transform.position);
-        _distanceJoint.connectedAnchor = mousePos;
+        _distanceJoint.connectedAnchor = gameObj.transform.position;
         _distanceJoint.enabled = true;
         _lineRenderer.enabled = true;
         Debug.Log("tag");
