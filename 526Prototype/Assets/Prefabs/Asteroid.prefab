@@ -140,6 +140,7 @@ MonoBehaviour:
   rb: {fileID: 0}
   speed: 1
   player: {fileID: 0}
+  grappleDist: 6
 --- !u!114 &-7111265268490958058
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -152,5 +153,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b90527e6ed9c9594fb23e7897f65c186, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  explosionForce: 7
-  grappleDist: 7
+  explosionForce: 4

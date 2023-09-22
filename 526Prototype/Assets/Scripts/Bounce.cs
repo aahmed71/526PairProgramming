@@ -11,7 +11,7 @@ public class Bounce : MonoBehaviour
         {
             Vector2 explodeDirection = (collision.transform.position - transform.position).normalized;
             collision.rigidbody.velocity = explodeDirection * explosionForce;
-            collision.transform.GetComponent<PlayerController>().ReleaseGrapple();
+            //collision.transform.GetComponent<PlayerController>().ReleaseGrapple();
         }
     }
 

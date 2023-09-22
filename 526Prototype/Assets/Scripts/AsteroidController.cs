@@ -34,6 +34,7 @@ public class AsteroidController : MonoBehaviour
 
     void OnMouseDown()
     {
+        Debug.Log("tag");
         if (Vector2.Distance(player.transform.position, transform.position) < grappleDist){
             player.GetComponent<PlayerController>().Grapple(this.gameObject);
             Debug.Log(Vector2.Distance(player.transform.position, transform.position));
