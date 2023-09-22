@@ -6146,6 +6146,8 @@ PrefabInstance:
     - target: {fileID: 4030125529350329202, guid: 121744c9469012143b44e9daac3dbe7a, type: 3}
       propertyPath: speed
       value: 5
+      propertyPath: maxDist
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 4030125529350329202, guid: 121744c9469012143b44e9daac3dbe7a, type: 3}
       propertyPath: mainCamera
@@ -6154,6 +6156,9 @@ PrefabInstance:
     - target: {fileID: 4030125529350329203, guid: 121744c9469012143b44e9daac3dbe7a, type: 3}
       propertyPath: m_IsTrigger
       value: 0
+    - target: {fileID: 4030125529350329204, guid: 121744c9469012143b44e9daac3dbe7a, type: 3}
+      propertyPath: m_MaxDistanceOnly
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4030125529350329214, guid: 121744c9469012143b44e9daac3dbe7a, type: 3}
       propertyPath: m_Name

@@ -11,6 +11,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private DistanceJoint2D _distanceJoint;
     [SerializeField] private bool isGrappled = false;
     [SerializeField] private bool isPulling = false;
+    [SerializeField] private float  maxDist;
     public GameObject grappled;
     // Start is called before the first frame update
     void Start()
@@ -19,6 +20,7 @@ public class PlayerController : MonoBehaviour
         rb.velocity = Vector2.right * speed;
         _lineRenderer = GetComponent<LineRenderer>();
         _distanceJoint = GetComponent<DistanceJoint2D>();
+        //_distanceJoint.distance = maxDist;
         _distanceJoint.enabled = false;
 
     }
@@ -43,6 +45,11 @@ public class PlayerController : MonoBehaviour
         }*/
         if (_distanceJoint.enabled)
         {
+
+            if(_distanceJoint.distance > maxDist)
+            {
+                _distanceJoint.distance = maxDist;
+            }
             _lineRenderer.SetPosition(0, grappled.transform.position);
             _lineRenderer.SetPosition(1, transform.position);
         }
@@ -87,7 +94,7 @@ public class PlayerController : MonoBehaviour
         grappled = gameObj;
         _lineRenderer.SetPosition(0, gameObj.transform.position);
         _lineRenderer.SetPosition(1, transform.position);
-        _distanceJoint.connectedAnchor = gameObj.transform.position;
+        _distanceJoint.connectedBody = gameObj.GetComponent<Rigidbody2D>();
         _distanceJoint.enabled = true;
         _lineRenderer.enabled = true;
         Debug.Log("tag");

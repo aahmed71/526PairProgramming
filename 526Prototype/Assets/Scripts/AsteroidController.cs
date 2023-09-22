@@ -7,6 +7,7 @@ public class AsteroidController : MonoBehaviour
     [SerializeField] private Rigidbody2D rb;
     [SerializeField] private float speed;
     [SerializeField] private GameObject player;
+    [SerializeField] private float grappleDist;
     // Start is called before the first frame update
     void Start()
     {
@@ -33,7 +34,11 @@ public class AsteroidController : MonoBehaviour
 
     void OnMouseDown()
     {
-        player.GetComponent<PlayerController>().Grapple(this.gameObject);
+        if (Vector2.Distance(player.transform.position, transform.position) < grappleDist){
+            player.GetComponent<PlayerController>().Grapple(this.gameObject);
+            Debug.Log(Vector2.Distance(player.transform.position, transform.position));
+        }
+        
     }
 
     private void OnMouseUp()
